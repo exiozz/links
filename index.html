@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Exiozz Liens</title>
+<meta name="description" content="Toutes les applications d'Exiozz et son portfolio au même endroit : Avancée, Spawnpoint et le portfolio.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ECEEF2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0D11" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Exiozz — mes liens">
+<meta property="og:description" content="Avancée, Spawnpoint et mon portfolio, au même endroit.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<script>
+  /* Applique le thème choisi avant le premier affichage, pour éviter un flash. */
+  try{var t=localStorage.getItem('links-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}
+</script>
+<style>
+/* Mise en page : une colonne étroite centrée, comme la carte d'accueil d'Avancée ; chaque lien est une rangée. */
+:root{
+  --canvas:#ECEEF2; --bg:#FFFFFF; --well:#F4F5F8; --hover:#E8EAEF;
+  --line:#E1E4EA; --line-2:#CDD2DB;
+  --ink:#14171F; --ink-2:#3A4150; --muted:#667085;
+  --accent:#2F5BEA; --on-accent:#FFFFFF;
+  --done:#12805C; --done-soft:#DDF5EA;
+  --shadow-1:0 1px 2px rgba(16,20,31,.06),0 1px 1px rgba(16,20,31,.04);
+  --shadow-2:0 12px 36px rgba(16,20,31,.16),0 2px 6px rgba(16,20,31,.06);
+  --f-display:'Bricolage Grotesque','Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-body:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --canvas:#0B0D11; --bg:#14171C; --well:#1A1E25; --hover:#232832;
+    --line:#262B35; --line-2:#363C49;
+    --ink:#ECEEF3; --ink-2:#C5CAD6; --muted:#939BAD;
+    --accent:#7C9BFF; --on-accent:#0B1020;
+    --done:#45CF9B; --done-soft:#143327;
+    --shadow-1:0 1px 2px rgba(0,0,0,.4);
+    --shadow-2:0 16px 44px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.4);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --canvas:#0B0D11; --bg:#14171C; --well:#1A1E25; --hover:#232832;
+  --line:#262B35; --line-2:#363C49;
+  --ink:#ECEEF3; --ink-2:#C5CAD6; --muted:#939BAD;
+  --accent:#7C9BFF; --on-accent:#0B1020;
+  --done:#45CF9B; --done-soft:#143327;
+  --shadow-1:0 1px 2px rgba(0,0,0,.4);
+  --shadow-2:0 16px 44px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.4);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--canvas); color:var(--ink);
+  font-family:var(--f-body); font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+.page{
+  min-height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;
+  padding-block:calc(32px + env(safe-area-inset-top,0px)) calc(32px + env(safe-area-inset-bottom,0px));
+  padding-inline:16px;
+}
+.card{
+  width:100%; max-width:460px;
+  background:var(--bg); border:1px solid var(--line); border-radius:20px;
+  padding:30px 28px 22px;
+  display:flex; flex-direction:column; gap:24px;
+  box-shadow:var(--shadow-2);
+  animation:rise .25s ease both;
+}
+@keyframes rise{from{transform:translateY(6px)}to{transform:none}}
+
+/* En-tête */
+.head{display:flex; flex-direction:column; gap:12px}
+.head-top{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.logo{
+  width:48px; height:48px; flex:none; border-radius:14px;
+  background:var(--accent); color:var(--on-accent);
+  display:grid; place-items:center;
+}
+.logo svg{width:100%; height:100%; display:block}
+
+/* Sélecteur de thème : même segment que le FR / EN des applis */
+.seg{
+  display:inline-flex; gap:2px; padding:3px; border-radius:10px;
+  background:var(--well); border:1px solid var(--line);
+}
+.seg button{
+  width:32px; height:28px; padding:0; border:0; border-radius:7px;
+  background:transparent; color:var(--muted);
+  display:grid; place-items:center;
+  transition:background-color .12s,color .12s;
+}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--bg); color:var(--ink); box-shadow:var(--shadow-1)}
+.seg svg{width:15px; height:15px}
+
+.title{display:flex; align-items:center; flex-wrap:wrap; gap:8px 12px}
+h1{
+  margin:0; font-family:var(--f-display); font-weight:700;
+  font-size:32px; line-height:1.1; letter-spacing:-.025em;
+}
+.status{
+  display:inline-flex; align-items:center; gap:7px;
+  padding:4px 10px 4px 9px; border-radius:999px;
+  background:var(--done-soft); color:var(--done);
+  font-size:12.5px; font-weight:600; white-space:nowrap;
+}
+.status::before{content:""; width:7px; height:7px; border-radius:50%; background:currentColor}
+.lead{margin:0; color:var(--muted); max-width:36ch}
+
+/* Groupes de liens */
+.group{display:flex; flex-direction:column; gap:8px}
+.label{
+  margin:0; font-size:11.5px; font-weight:700; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--ink-2);
+}
+.links{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px}
+.link{
+  position:relative;
+  display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:14px;
+  padding:13px; border-radius:14px;
+  background:var(--bg); border:1px solid var(--line);
+  box-shadow:var(--shadow-1);
+  transition:background-color .12s,border-color .12s;
+}
+.link:hover{background:var(--well); border-color:var(--line-2)}
+.link:has(.name a:focus-visible){outline:2px solid var(--accent); outline-offset:2px}
+.name a{outline:none}
+.name a::after{content:""; position:absolute; inset:0; border-radius:inherit}
+
+/* Logos des applis */
+.tile{
+  width:46px; height:46px; flex:none; border-radius:13px;
+  background:var(--accent); color:var(--on-accent);
+  display:grid; place-items:center;
+  transition:transform .15s;
+}
+.tile svg{width:100%; height:100%; display:block}
+.tile.ink{background:var(--ink); color:var(--bg)}
+.link:hover .tile{transform:scale(1.04) rotate(-2deg)}
+
+.txt{display:flex; flex-direction:column; gap:1px; min-width:0}
+.name{margin:0; font-family:var(--f-body); font-weight:600; font-size:15.5px; line-height:1.3}
+.desc{color:var(--muted); font-size:13.5px; line-height:1.4}
+.url{
+  margin-top:4px; display:inline-flex; align-items:center; gap:4px;
+  font-family:var(--f-mono); font-size:11.5px; color:var(--muted);
+  overflow-wrap:anywhere; transition:color .12s;
+}
+.url svg{width:11px; height:11px; flex:none; transition:transform .12s}
+.link:hover .url{color:var(--accent)}
+.link:hover .url svg{transform:translate(1px,-1px)}
+
+.copy{
+  position:relative; z-index:1;
+  width:34px; height:34px; flex:none; padding:0; border-radius:9px;
+  background:var(--bg); border:1px solid var(--line); color:var(--muted);
+  display:grid; place-items:center; box-shadow:var(--shadow-1);
+  transition:background-color .12s,border-color .12s,color .12s,transform .08s;
+}
+.copy:hover{background:var(--hover); border-color:var(--line-2); color:var(--ink)}
+.copy:active{transform:translateY(1px)}
+.copy svg{width:15px; height:15px}
+.copy .i-ok{display:none}
+.copy.ok{color:var(--done); border-color:var(--done); background:var(--done-soft)}
+.copy.ok .i-copy{display:none}
+.copy.ok .i-ok{display:block}
+
+.foot{
+  margin:0; padding-top:16px; border-top:1px solid var(--line);
+  color:var(--muted); font-size:12.5px; text-align:center;
+}
+.note{margin:0; max-width:400px; text-align:center; color:var(--muted); font-size:13px}
+
+@media (max-width:420px){
+  .card{padding:24px 16px 18px; border-radius:18px}
+  .link{gap:12px; padding:12px}
+  .tile{width:42px; height:42px; border-radius:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .card{animation:none}
+  *{transition:none !important}
+  .link:hover .tile,.link:hover .url svg,.copy:active{transform:none}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="card">
+    <header class="head">
+      <div class="head-top">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="currentColor"><rect x="12" y="10" width="4.6" height="20" rx="2.3"/><rect x="12" y="10" width="16.5" height="4.6" rx="2.3"/><rect x="12" y="17.7" width="12" height="4.6" rx="2.3" opacity=".7"/><rect x="12" y="25.4" width="16.5" height="4.6" rx="2.3"/></svg>
+        </span>
+        <div class="seg" role="group" aria-label="Thème">
+          <button type="button" data-theme-set="light" aria-pressed="false" aria-label="Thème clair" title="Clair">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8" cy="8" r="2.8"/><path d="M8 1.6v1.5M8 12.9v1.5M1.6 8h1.5M12.9 8h1.5M3.5 3.5l1 1M11.5 11.5l1 1M12.5 3.5l-1 1M4.5 11.5l-1 1"/></svg>
+          </button>
+          <button type="button" data-theme-set="dark" aria-pressed="false" aria-label="Thème sombre" title="Sombre">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M13.4 9.6A5.6 5.6 0 0 1 6.4 2.6a5.6 5.6 0 1 0 7 7Z"/></svg>
+          </button>
+          <button type="button" data-theme-set="auto" aria-pressed="true" aria-label="Thème automatique" title="Auto">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="8" rx="1.6"/><path d="M6 13.5h4"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="title">
+        <h1>Exiozz</h1>
+        <span class="status">Disponible</span>
+      </div>
+      <p class="lead">Développeur Roblox &amp; Web. Mes applications et mon portfolio, au même endroit.</p>
+    </header>
+
+    <section class="group" aria-labelledby="g-apps">
+      <h2 class="label" id="g-apps">Mes applications</h2>
+      <ul class="links">
+        <li class="link">
+          <span class="tile" aria-hidden="true">
+            <!-- Avancée : les trois barres qui montent, posées sur une ligne de base -->
+            <svg viewBox="0 0 40 40" fill="currentColor"><rect x="9.5" y="21.5" width="5.2" height="8.5" rx="2.2" opacity=".5"/><rect x="17.4" y="15.5" width="5.2" height="14.5" rx="2.2" opacity=".78"/><rect x="25.3" y="9.5" width="5.2" height="20.5" rx="2.2"/></svg>
+          </span>
+          <div class="txt">
+            <h3 class="name"><a href="https://avancee-app.vercel.app" target="_blank" rel="noopener">Avancée</a></h3>
+            <span class="desc">L’espace de travail simple pour organiser tes projets, tes clients et ton travail.</span>
+            <span class="url">avancee-app.vercel.app <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span>
+          </div>
+          <button class="copy" type="button" data-copy="https://avancee-app.vercel.app" aria-label="Copier le lien d’Avancée" title="Copier le lien">
+            <svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="1.8"/><path d="M10.5 5.5V4.3a1.8 1.8 0 0 0-1.8-1.8H4.3a1.8 1.8 0 0 0-1.8 1.8v4.4a1.8 1.8 0 0 0 1.8 1.8h1.2"/></svg>
+            <svg class="i-ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg>
+          </button>
+        </li>
+        <li class="link">
+          <span class="tile" aria-hidden="true">
+            <!-- Spawnpoint : un point d'apparition, la cible vue du dessus -->
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-linecap="round"><circle cx="20" cy="20" r="8.6" stroke-width="2.6" opacity=".55"/><path d="M20 7.5v5.2M20 27.3v5.2M7.5 20h5.2M27.3 20h5.2" stroke-width="2.6"/><circle cx="20" cy="20" r="3.4" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <div class="txt">
+            <h3 class="name"><a href="https://spawpoint.vercel.app" target="_blank" rel="noopener">Spawnpoint</a></h3>
+            <span class="desc">Cours, outils et extraits de code Luau pour apprendre à créer sur Roblox.</span>
+            <span class="url">spawpoint.vercel.app <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span>
+          </div>
+          <button class="copy" type="button" data-copy="https://spawpoint.vercel.app" aria-label="Copier le lien de Spawnpoint" title="Copier le lien">
+            <svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="1.8"/><path d="M10.5 5.5V4.3a1.8 1.8 0 0 0-1.8-1.8H4.3a1.8 1.8 0 0 0-1.8 1.8v4.4a1.8 1.8 0 0 0 1.8 1.8h1.2"/></svg>
+            <svg class="i-ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <section class="group" aria-labelledby="g-me">
+      <h2 class="label" id="g-me">Mon portfolio</h2>
+      <ul class="links">
+        <li class="link">
+          <span class="tile ink" aria-hidden="true">
+            <!-- Portfolio : des chevrons de code autour d'une barre oblique -->
+            <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m15 13.5-6.5 6.5 6.5 6.5M25 13.5l6.5 6.5-6.5 6.5"/><path d="m22.2 11.5-4.4 17" opacity=".6"/></svg>
+          </span>
+          <div class="txt">
+            <h3 class="name"><a href="https://exiozz.github.io/portfolio" target="_blank" rel="noopener">Portfolio</a></h3>
+            <span class="desc">Développement Roblox, GFX, bots Discord, sites web et shop d’assets.</span>
+            <span class="url">exiozz.github.io/portfolio <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 8.5 3.5M4.5 3.5h4v4"/></svg></span>
+          </div>
+          <button class="copy" type="button" data-copy="https://exiozz.github.io/portfolio" aria-label="Copier le lien du portfolio" title="Copier le lien">
+            <svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="1.8"/><path d="M10.5 5.5V4.3a1.8 1.8 0 0 0-1.8-1.8H4.3a1.8 1.8 0 0 0-1.8 1.8v4.4a1.8 1.8 0 0 0 1.8 1.8h1.2"/></svg>
+            <svg class="i-ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.5 3 3 6-7"/></svg>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <p class="foot">© <span id="y">2026</span> Exiozz</p>
+  </div>
+  <p class="note">Un projet en tête ? Tout passe par le portfolio.</p>
+  <span class="sr" id="live" aria-live="polite"></span>
+</main>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  /* Thème : clair, sombre ou automatique (suit l'appareil). */
+  var buttons = document.querySelectorAll('[data-theme-set]');
+  function show(mode){
+    buttons.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.themeSet === mode)); });
+  }
+  var saved = 'auto';
+  try { var s = localStorage.getItem('links-theme'); if (s === 'light' || s === 'dark') saved = s; } catch (e) {}
+  show(saved);
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){
+      var mode = b.dataset.themeSet;
+      if (mode === 'auto') root.removeAttribute('data-theme'); else root.dataset.theme = mode;
+      try { if (mode === 'auto') localStorage.removeItem('links-theme'); else localStorage.setItem('links-theme', mode); } catch (e) {}
+      show(mode);
+    });
+  });
+
+  /* Copier un lien. */
+  var live = document.getElementById('live');
+  function done(btn, ok){
+    live.textContent = ok ? 'Lien copié' : 'Copie impossible, sélectionne l’adresse à la main';
+    if (!ok) return;
+    btn.classList.add('ok');
+    setTimeout(function(){ btn.classList.remove('ok'); live.textContent = ''; }, 1600);
+  }
+  function fallback(text){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    var ok = false; try { ok = document.execCommand('copy'); } catch (e) {}
+    ta.remove(); return ok;
+  }
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.dataset.copy;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function(){ done(btn, true); }, function(){ done(btn, fallback(text)); });
+      } else { done(btn, fallback(text)); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
