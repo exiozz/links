@@ -5,6 +5,7 @@ La page de liens d'Exiozz : ses applications et son portfolio au même endroit.
 - [Avancée](https://avancee-app.vercel.app) — l'espace de travail pour organiser projets, clients et travail
 - [Spawnpoint](https://spawpoint.vercel.app) — cours, outils et extraits de code pour créer sur Roblox
 - [Portfolio](https://exiozz.github.io/portfolio)
+- [Shop](https://exiozz.github.io/portfolio/shop.html)
 
 ## Modifier
 
